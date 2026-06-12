@@ -1,0 +1,213 @@
+@import "tailwindcss";
+
+/* ─── CUSTOM THEME ─── */
+@theme {
+  --color-navy: #1A3A6B;
+  --color-navy-dark: #0F2447;
+  --color-navy-light: #2A5298;
+  --color-gold: #C8A84B;
+  --color-gold-light: #D4B85C;
+  --color-gold-dark: #A88B3D;
+  --color-cream: #FDF8F0;
+  --color-cream-dark: #F5EDE0;
+  --color-warm-white: #FEFCF9;
+  --color-text-primary: #1C2B4A;
+  --color-text-muted: #5A6A85;
+  --color-text-light: #8096BA;
+  --color-border: #E2E8F0;
+  --color-success: #138808;
+  --color-saffron: #FF8C00;
+
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-inter: 'Inter', system-ui, sans-serif;
+
+  --section-spacing-xl: 140px;
+  --section-spacing-lg: 120px;
+  --section-spacing-md: 96px;
+  --section-spacing-sm: 72px;
+
+  --container-max-width: 1400px;
+
+  --card-padding-lg: 40px;
+  --card-padding-md: 32px;
+  --card-padding-sm: 24px;
+}
+
+/* ─── BASE STYLES ─── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-inter);
+  background: var(--color-warm-white);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+#root {
+  width: 100%;
+  overflow-x: clip;
+}
+
+img,
+iframe {
+  max-width: 100%;
+}
+
+/* ─── SCROLLBAR STYLING ─── */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-navy-light);
+}
+
+/* ─── UTILITY CLASSES ─── */
+.font-playfair {
+  font-family: var(--font-playfair);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.site-container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.section-grid {
+  display: grid;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+@media (min-width: 640px) {
+  .site-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-container {
+    padding-inline: 2rem;
+  }
+}
+
+/* ─── GLASSMORPHISM ─── */
+.glass {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(15, 36, 71, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ─── GRADIENT TEXT ─── */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-gold) 0%, var(--color-gold-light) 50%, var(--color-gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── SECTION PADDING ─── */
+.section-padding {
+  padding-top: var(--section-spacing-sm);
+  padding-bottom: var(--section-spacing-sm);
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: var(--section-spacing-md);
+    padding-bottom: var(--section-spacing-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: var(--section-spacing-lg);
+    padding-bottom: var(--section-spacing-lg);
+  }
+}
+
+/* ─── ANIMATED UNDERLINE ─── */
+.animated-underline {
+  position: relative;
+}
+.animated-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--color-gold);
+  transition: width 0.3s ease;
+}
+.animated-underline:hover::after {
+  width: 100%;
+}
+
+/* ─── SWIPER CUSTOM ─── */
+.swiper-pagination-bullet {
+  background: var(--color-navy) !important;
+  opacity: 0.3;
+}
+.swiper-pagination-bullet-active {
+  background: var(--color-gold) !important;
+  opacity: 1;
+}
+
+/* ─── FLOATING PARTICLES ─── */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(200, 168, 75, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(200, 168, 75, 0.6); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ─── SELECTION ─── */
+::selection {
+  background: var(--color-gold);
+  color: var(--color-navy-dark);
+}
